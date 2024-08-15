@@ -18,7 +18,6 @@ class CountingScene(Scene):
         number = DecimalNumber().set_color(WHITE).scale(6)
         number.add_updater(lambda number: number.move_to(ORIGIN))
 
-        self.add(Text("Loading numbers...").move_to(UP * 4))
         self.add(number)
 
 

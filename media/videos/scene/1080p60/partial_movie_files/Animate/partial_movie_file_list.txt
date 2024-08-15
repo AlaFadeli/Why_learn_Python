@@ -1,6 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/home/elwardi/workspace/new_project/slides/manim_env/media/videos/scene/1080p60/partial_movie_files/Animate/3529212410_396196850_223132457.mp4'
-file 'file:/home/elwardi/workspace/new_project/slides/manim_env/media/videos/scene/1080p60/partial_movie_files/Animate/3040924799_2698359698_2816103050.mp4'
-file 'file:/home/elwardi/workspace/new_project/slides/manim_env/media/videos/scene/1080p60/partial_movie_files/Animate/3040924799_229896448_2919792970.mp4'
-file 'file:/home/elwardi/workspace/new_project/slides/manim_env/media/videos/scene/1080p60/partial_movie_files/Animate/3040924799_665802258_2502825545.mp4'
-file 'file:/home/elwardi/workspace/new_project/slides/manim_env/media/videos/scene/1080p60/partial_movie_files/Animate/3040924799_3964923011_2502825545.mp4'
