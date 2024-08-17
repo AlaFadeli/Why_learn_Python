@@ -72,7 +72,8 @@ if __name__ == '__main__':
             insert_line_no=True
         )
         code_web.move_to(ORIGIN)
-
+        code_txt = Text("This is an example of coding a web app using the Python framework Flask",font_size=10, font="UBUNTU")
+        code_txt.move_to(LEFT*2 + UP*2)
         # Animations
         self.camera.background_color = "#ece6e2"
         self.play(FadeIn(logo))
@@ -127,6 +128,8 @@ if __name__ == '__main__':
         self.play(r1.animate.shift(RIGHT*2.6 + UP*0.1))
         self.wait()
         self.play(Write(txt1))
-        self.play(FadeOut(txt1))
+        self.play(FadeOut(r1,txt1))
+        self.wait(1)
+        self.play(Write(code_txt))
         self.play(Write(code_web))
      
