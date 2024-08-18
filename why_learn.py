@@ -42,7 +42,7 @@ class WhyLearnPy(Scene):
         
         # R1 show:
         txt1 = Text("Web Development", font_size=10, font="UBUNTU")
-        txt1.move_to(UP*0.1)
+        txt1.move_to(UP*0.5)
         
         code_web = Code(
             code="""
@@ -74,6 +74,104 @@ if __name__ == '__main__':
         code_web.move_to(ORIGIN)
         code_txt = Text("This is an example of coding a web app using the Python framework Flask",font_size=10, font="UBUNTU")
         code_txt.move_to(LEFT*2 + UP*2)
+        
+        
+            
+        txt2 = Text("Data Science and Machine Learning", font_size=10,font="UBUNTU")
+        txt2_ex = Text("This is an example of a visualization using Python packages",font_size=10,font="UBUNTU")
+        txt2.move_to(UP*0.5)
+        txt2_ex.move_to(LEFT*2 + UP*2)
+            
+        code_datas = Code(
+            code = '''  
+
+import pandas as pd
+from matplotlib import pyplot as plt
+from matplotlib.ticker import FuncFormatter
+import seaborn as sns
+
+# Apply a seaborn style
+sns.set(style="whitegrid")
+
+# Data
+c19_cases_by_country = {
+    "USA": 111820082,
+    "India": 45035393,
+    "France": 40138560,
+    "Germany": 38828995,
+    "Brazil": 38743918,
+    "S. Korea": 34571873,
+    "Japan": 33803572,
+    "Italy": 26723249,
+    "UK": 24910387,
+    "Russia": 24124215
+}
+
+# Plot
+categories = list(c19_cases_by_country.keys())
+values = list(c19_cases_by_country.values())
+
+fig, ax = plt.subplots(figsize=(12, 7))  # Adjust figure size for better readability
+
+# Create a bar plot with improved style
+bars = ax.bar(categories, values, color=sns.color_palette("viridis", len(categories)), edgecolor='w', linewidth=1.2)
+
+def millions_formatter(x, pos):
+    """Formatter function to display y-axis values in millions."""
+    return f'{x * 1e-6:.1f}M'
+
+# Apply the custom formatter to the y-axis
+ax.yaxis.set_major_formatter(FuncFormatter(millions_formatter))
+
+# Customization
+plt.title("Top 10 Total COVID-19 Cases by Country", fontsize=18, fontweight='bold', pad=20, backgroundcolor='#e0e0e0')
+plt.xlabel("Country", fontsize=14, fontweight='bold', labelpad=15)
+plt.ylabel("Cases", fontsize=14, fontweight='bold', labelpad=15)
+plt.xticks(rotation=45, ha='right', fontsize=12)
+plt.yticks(fontsize=12)
+
+# Add gridlines for y-axis for better readability
+ax.yaxis.grid(True, linestyle='--', alpha=0.7, linewidth=0.7)
+
+# Add data labels on bars
+for bar in bars:
+    yval = bar.get_height()
+    ax.text(bar.get_x() + bar.get_width()/2, yval, f'{yval * 1e-6:.1f}M', ha='center', va='bottom', fontsize=10, color='black', weight='bold')
+
+# Add a background color
+ax.set_facecolor('#f5f5f5')
+
+# Improve layout
+plt.tight_layout()
+
+# Save the plot to a PNG file
+plt.savefig('plot_styled_updated.png')
+
+# Display the plot
+plt.show()
+
+# DataFrame csv file :
+
+df = pd.read_csv("country_wise_latest.csv")
+
+print(df)
+
+''',            
+            language = "python",
+            style = "vim",
+            font_size = 7,
+            line_spacing = 0.5,
+            insert_line_no = True,
+)    
+        code_datas.move_to(ORIGIN)
+        
+            
+            
+            
+            
+            
+            
+
         # Animations
         self.camera.background_color = "#ece6e2"
         self.play(FadeIn(logo))
@@ -131,5 +229,12 @@ if __name__ == '__main__':
         self.play(FadeOut(r1,txt1))
         self.wait(1)
         self.play(Write(code_txt))
-        self.play(Write(code_web))
-     
+        self.play(Write(code_web), run_time = 2)
+        self.wait(3)
+        self.play(Uncreate(code_txt,code_web))
+        self.play(Write(txt2))
+        self.wait()
+        self.play(FadeOut(txt2))
+        self.play(FadeIn(txt2_ex))
+        self.play(Write(code_datas), run_time=2)
+        self.wait(2)
